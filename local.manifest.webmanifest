@@ -1,0 +1,22 @@
+{
+  "background_color": "purple",
+  "description": "USA Trip 2020 Itinerary.",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "/icon/river_icon_192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon/river_icon_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "name": "USA Trip 2020 Itinerary",
+  "short_name": "USA Trip",
+  "start_url": "/index.html",
+  "prefer_related_applications": false,
+  "theme_color": "#317EFB"
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158629124-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-158629124-1');
+    </script>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#317EFB"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="msapplication-TileColor" content="#317EFB">
+    <title>USA Trip 2020</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="./jquery.csv.js"></script>
+    <script src="index.js" defer></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="canonical" href="https://rhuts.github.io/usa-trip-2020/" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </style>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <h1 style="text-decoration: line-through;">USA Trip 2020</h1>
+        <h2>Postponed b/c covid19</h2>
+        <br>
+        <button class="btn btn-primary" id="add-button">Install to home screen</button>
+        <br>
+        <div id="days_until"></div>
+        <br>
+        <div id="table_container"></div>
+    </div>
+
+    <div id="snackbar">A new version of this app is available. Click <a id="reload">here</a> to update.</div>
+
+    <script>
+      
+            $(document).ready(() => {
+
+                let newWorker;
+
+                // google sheets link
+                var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQIZaB379mirNhfSs8N2XQo4pmq3_rx-8rQ8MlZSadq6Y-g_MYiBqOWr6OJrfB6NXQISrZ26Wks0Cva/pub?gid=1468488260&single=true&output=csv';
+                var range = '&range=A1:F19'
+                url += range;
+
+                function showUpdateBar() {
+                    let snackbar = document.getElementById('snackbar');
+                    snackbar.className = 'show';
+                }
+
+                // The click event on the pop up notification
+                document.getElementById('reload').addEventListener('click', function(){
+                    newWorker.postMessage({ action: 'skipWaiting' });
+                });
+
+              
+                jQuery.get(url, function(input) {
+
+                    const data = $.csv.toArrays(input);
+
+                    var d = new Date();
+                    var month = d.getMonth();
+                    var day = d.getDate();
+                    var highlightIdx = 1; // skip header
+
+                    // April
+                    if (month == 3) {
+                        if (day > 24) {
+                            highlightIdx += day-25;
+                        }
+
+                    // May
+                    } else if (month == 4) {
+                        highlightIdx += 6;
+                        highlightIdx += day-1;
+                    }
+
+                    // console.log('curr month: '+month);
+                    // console.log('curr day: '+day);
+                    // console.log('highlight ind: '+highlightIdx);
+
+
+                    // Build table
+                    var result = "<table class=\"table table-hover table-sm\" border=1>";
+                    for (var i=0; i<data.length; i++) {
+
+                        // skip content after May 12
+                        if (i > 18) {
+                            break;
+                        }
+                        
+                        if (i < highlightIdx) {
+                            result += "<tr id=\"past\">";
+
+                        } else if (i == highlightIdx) {
+                            result += "<tr id=\"current\">";
+
+                        } else {
+                            result += "<tr>";
+                        }
+
+                        for (var j=0; j<data[i].length; j++){
+                            result += "<td>"+data[i][j]+"</td>";
+                        }
+                        result += "</tr>";
+                    }
+                    result += "</table>";
+                    document.getElementById("table_container").innerHTML = result;
+                }, 'text');
+
+
+                // Days until calcualtion
+                var today = new Date();
+                var trip = new Date(today.getFullYear(), 3, 25);
+                if (today.getMonth() == 3 && today.getDate() > 25) {
+                    trip.setFullYear(trip.getFullYear()+1); 
+                }  
+                var one_day=1000*60*60*24;
+                var numDays = Math.ceil((trip.getTime()-today.getTime())/(one_day));
+                numDays = numDays.toString().fontsize(6);
+                var todayMonth = today.getMonth() + 1;
+                document.getElementById("days_until").innerHTML = numDays+" days left until trip! <br>Today is "+todayMonth+"/"+today.getDate()+"/"+today.getFullYear()+"<br>The table below highlights the current/next day in real time.";
+            });
+
+    </script>
+</body>
+</html>
