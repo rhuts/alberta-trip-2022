@@ -1,7 +1,7 @@
 // Register service worker to control making site work offline
 if('serviceWorker' in navigator) {
   navigator.serviceWorker
-           .register('/usa-trip-2020/sw.js', {scope: '/usa-trip-2020/'})
+           .register('/alberta-trip-2022/sw.js', {scope: '/alberta-trip-2022/'})
            .then(function(reg) { 
              console.log('Service Worker Registered');
              reg.addEventListener('updatefound', () => {

@@ -1,6 +1,6 @@
 {
   "background_color": "purple",
-  "description": "USA Trip 2020 Itinerary.",
+  "description": "Alberta Trip 2022 Itinerary.",
   "display": "fullscreen",
   "icons": [
     {
@@ -14,8 +14,8 @@
       "sizes": "512x512"
     }
   ],
-  "name": "USA Trip 2020 Itinerary",
-  "short_name": "USA Trip",
+  "name": "UAlbertaSA Trip 2022 Itinerary",
+  "short_name": "Alberta Trip",
   "start_url": "/index.html",
   "prefer_related_applications": false,
   "theme_color": "#317EFB"

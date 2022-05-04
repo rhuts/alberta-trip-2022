@@ -1,22 +1,22 @@
 {
   "background_color": "purple",
-  "description": "USA Trip 2020 Itinerary.",
+  "description": "Alberta Trip 2020 Itinerary.",
   "display": "fullscreen",
   "icons": [
     {
-      "src": "/usa-trip-2020/icon/river_icon_192.png",
+      "src": "/alberta-trip-2022/icon/river_icon_192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/usa-trip-2020/icon/river_icon_512.png",
+      "src": "/alberta-trip-2022/icon/river_icon_512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "name": "USA Trip 2020 Itinerary",
-  "short_name": "USA Trip",
-  "start_url": "/usa-trip-2020/index.html",
+  "name": "Alberta Trip 2022 Itinerary",
+  "short_name": "Alberta Trip",
+  "start_url": "/alberta-trip-2022/index.html",
   "prefer_related_applications": false,
   "theme_color": "#317EFB"
 }

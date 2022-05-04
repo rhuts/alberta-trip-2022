@@ -4,11 +4,11 @@ self.addEventListener('install', function(e) {
     e.waitUntil(
         caches.open(cacheName).then(function(cache) {
             return cache.addAll([
-                '/usa-trip-2020/',
-                '/usa-trip-2020/index.html',
-                '/usa-trip-2020/index.js',
-                '/usa-trip-2020/style.css',
-                '/usa-trip-2020/jquery.csv.js'
+                '/alberta-trip-2022/',
+                '/alberta-trip-2022/index.html',
+                '/alberta-trip-2022/index.js',
+                '/alberta-trip-2022/style.css',
+                '/alberta-trip-2022/jquery.csv.js'
                 ]);
         })
     );
