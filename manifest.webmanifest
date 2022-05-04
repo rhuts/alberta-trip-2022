@@ -1,6 +1,6 @@
 {
   "background_color": "purple",
-  "description": "Alberta Trip 2020 Itinerary.",
+  "description": "Alberta Trip 2022 Itinerary.",
   "display": "fullscreen",
   "icons": [
     {
@@ -18,5 +18,6 @@
   "short_name": "Alberta Trip",
   "start_url": "/alberta-trip-2022/index.html",
   "prefer_related_applications": false,
-  "theme_color": "#317EFB"
+  "theme_color": "#317EFB",
+  "id": "/alberta-trip-2022/index.html"
 }
