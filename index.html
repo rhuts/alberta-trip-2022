@@ -30,7 +30,8 @@
 <body>
     <div class="container">
         <br>
-        <h1 style="text-decoration: line-through;">Alberta Trip 2022</h1>
+        <!-- <h1 style="text-decoration: line-through;">Alberta Trip 2022</h1> -->
+        <h1>Alberta Trip 2022</h1>
         <br>
         <button class="btn btn-primary" id="add-button">Install to home screen</button>
         <br>
@@ -72,16 +73,22 @@
                     var day = d.getDate();
                     var highlightIdx = 1; // skip header
 
-                    // April
-                    if (month == 3) {
-                        if (day > 24) {
-                            highlightIdx += day-25;
-                        }
+                    // // April
+                    // if (month == 3) {
+                    //     if (day > 24) {
+                    //         highlightIdx += day-25;
+                    //     }
 
-                    // May
-                    } else if (month == 4) {
-                        highlightIdx += 6;
-                        highlightIdx += day-1;
+                    // // May
+                    // } else if (month == 4) {
+                    //     highlightIdx += 6;
+                    //     highlightIdx += day-1;
+                    // }
+
+                    // June
+                    if (month == 5) {
+                        // highlightIdx += 6;
+                        highlightIdx += day-3;
                     }
 
                     // console.log('curr month: '+month);
@@ -93,8 +100,12 @@
                     var result = "<table class=\"table table-hover table-sm\" border=1>";
                     for (var i=0; i<data.length; i++) {
 
-                        // skip content after May 12
-                        if (i > 18) {
+                        // // skip content after May 12
+                        // if (i > 18) {
+                        //     break;
+                        // }
+                        // skip content after June 19
+                        if (i > 17) {
                             break;
                         }
                         
@@ -119,9 +130,11 @@
 
 
                 // Days until calcualtion
+                var tripStartMonth = 5;
+                var tripStartDay = 3;
                 var today = new Date();
-                var trip = new Date(today.getFullYear(), 3, 25);
-                if (today.getMonth() == 3 && today.getDate() > 25) {
+                var trip = new Date(today.getFullYear(), tripStartMonth, tripStartDay);
+                if (today.getMonth() == tripStartMonth && today.getDate() > tripStartDay) {
                     trip.setFullYear(trip.getFullYear()+1); 
                 }  
                 var one_day=1000*60*60*24;
